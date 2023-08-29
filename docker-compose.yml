@@ -1,6 +1,31 @@
 version: '3'
 
 services:
+  proxy:
+    image: traefik:v2.5
+    command:
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
+      - "--certificatesresolvers.myresolver.acme.email=example@email.com"
+      - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
+      - "--certificatesresolvers.myresolver.acme.tlschallenge=true"
+      - "--entrypoints.web.http.redirections.entrypoint.to=websecure"
+      - "--entrypoints.web.http.redirections.entrypoint.scheme=https"
+    labels:
+      - "traefik.http.routers.api_http.rule=Host(`proxy.local`)"
+      - "traefik.http.routers.api.rule=Host(`proxy.local`)"
+      - "traefik.http.routers.api.service=api@internal"
+      - "traefik.http.routers.api.tls=true"
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+      - ".docker/config/letsencrypt:/letsencrypt"
+
   app:
     build:
       context: ./.docker/build/app
@@ -8,3 +33,8 @@ services:
     volumes:
       - ./next/:/var/www
     tty: true
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.kudosboard.tls=true"
+      - "traefik.http.routers.kudosboard.rule=Host(`kudosboard.local`)"
+      - "traefik.http.services.web.loadbalancer.server.port=3000"
