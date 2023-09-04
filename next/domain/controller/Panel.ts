@@ -1,3 +1,4 @@
+
 import PanelModel from "../models/Panel";
 import PanelService from "../service/Panel";
 
@@ -21,7 +22,7 @@ export default class PanelController {
   }
 
   async createPanel(panel: PanelModel) {
-    const response = await this.service.create(panel.getData());
+    const response = await this.service.create({ panel: panel.getData(), userId: "1" });
 
     panel.slug = response.slug;
 

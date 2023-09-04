@@ -1,5 +1,10 @@
 import { PanelModelType } from "../models/Panel";
 
+type createRequest = {
+  panel: PanelModelType
+  userId: string
+}
+
 export default class PanelService {
   constructor() {}
 
@@ -14,15 +19,17 @@ export default class PanelService {
     }
   }
 
-  async create(panel: PanelModelType) {
+  async create({ panel, userId }: createRequest) {
     try {
       let response = await fetch("/api", {
         method: "POST",
         headers: {
+          "Accept": "application/json",
           "Content-Type": "application/json",
+          "user-id": userId
         },
-        body: JSON.stringify(panel)
-      })
+        body: JSON.stringify(panel),
+      });
 
       let json = await response.json();
 
