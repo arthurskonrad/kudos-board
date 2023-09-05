@@ -32,7 +32,7 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./next/:/var/www
-    tty: true
+    command: npm run dev
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.kudosboard.tls=true"
