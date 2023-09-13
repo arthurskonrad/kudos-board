@@ -8,9 +8,15 @@ type createRequest = {
 export default class PanelService {
   constructor() {}
 
-  async index() {
+  async index({ userId }: { userId: string }) {
     try {
-      let response = await fetch("/api");
+      let response = await fetch("/api", {
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json",
+          "user-id": userId
+        }
+      });
       let json = await response.json();
 
       return json;

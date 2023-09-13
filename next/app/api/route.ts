@@ -7,7 +7,7 @@ export async function GET(request: Request) {
         {
           title: "First Panel",
           slug: randomUUID(),
-          owner: "Me",
+          owner: request.headers.get("user-id"),
           createdAt: new Date(),
           updatedAt: new Date(),
           password: "12345678",
@@ -20,5 +20,10 @@ export async function GET(request: Request) {
 }
 
 export async function POST(request: Request) {
-  return new Response(JSON.stringify({ slug: randomUUID() }));
+  const panel = await request.json();
+
+  panel.slug = randomUUID();
+  panel.owner = request.headers.get("user-id")
+
+  return new Response(JSON.stringify(panel));
 }
