@@ -4,6 +4,13 @@ import PanelController from "@/domain/controller/Panel";
 import PanelModel from "@/domain/models/Panel";
 import useAuth from "@/app/hooks/useAuth";
 
+export type CreatePanelProps = {
+  title: string;
+  description: string;
+  password: string;
+  clientPassword: string;
+};
+
 export const usePanels = () => {
   const [panels, setPanel] = useState<PanelModel[]>([]);
 
@@ -12,7 +19,9 @@ export const usePanels = () => {
 
   useEffect(() => {
     const getPanel = async () => {
-      const response = await controller.getPanels({ userId: getUser()?.userId });
+      const response = await controller.getPanels({
+        userId: getUser()?.userId,
+      });
 
       setPanel(response);
     };
@@ -20,18 +29,27 @@ export const usePanels = () => {
     getPanel();
   }, []);
 
-  const createPanel = async () => {
+  const createPanel = async ({
+    title,
+    description,
+    password,
+    clientPassword,
+  }: CreatePanelProps) => {
     const panel = new PanelModel({
-      title: "Second Panel",
+      title,
+      description,
       owner: getUser()?.userId, // Todo refactorar este parametro
       createdAt: new Date(),
       updatedAt: new Date(),
-      password: "12345678",
-      clientPassword: "12345678",
+      password,
+      clientPassword,
       status: "ACTIVE",
     });
 
-    const response = await controller.createPanel({ panel, userId: getUser()?.userId});
+    const response = await controller.createPanel({
+      panel,
+      userId: getUser()?.userId,
+    });
 
     if (!panels) {
       return setPanel([response]);
@@ -40,5 +58,5 @@ export const usePanels = () => {
     setPanel([...panels, response]);
   };
 
-  return { panels, createPanel }
-}
+  return { panels, createPanel };
+};

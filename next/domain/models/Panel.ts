@@ -1,5 +1,6 @@
 export type PanelModelType = {
   title: string;
+  description: string;
   slug?: string;
   owner: string;
   createdAt: Date;
@@ -11,6 +12,7 @@ export type PanelModelType = {
 
 export default class PanelModel {
   public title: string;
+  public description: string;
   public slug?: string;
   public owner: string;
   public createdAt: Date;
@@ -21,6 +23,7 @@ export default class PanelModel {
 
   constructor(public data: PanelModelType) {
     this.title = data.title;
+    this.description = data.description;
     this.slug = data.slug;
     this.owner = data.owner;
     this.createdAt = data.createdAt;
@@ -33,6 +36,7 @@ export default class PanelModel {
   public getData() {
     return  {
       title: this.title,
+      description: this.description,
       slug: this.slug,
       owner: this.owner,
       createdAt: this.createdAt,

@@ -6,6 +6,7 @@ export async function GET(request: Request) {
       panel: [
         {
           title: "First Panel",
+          description: "First Panel Description",
           slug: randomUUID(),
           owner: request.headers.get("user-id"),
           createdAt: new Date(),
