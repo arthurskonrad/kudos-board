@@ -15,6 +15,9 @@ export default function Panel({ panel }: PanelProps) {
           <strong>title</strong>: {panel.title}
         </li>
         <li>
+          <strong>description</strong>: {panel.description}
+        </li>
+        <li>
           <strong>slug</strong>: {panel.slug}
         </li>
         <li>
