@@ -9,8 +9,8 @@ export default class PanelController {
     this.service = new PanelService();
   }
 
-  async getPanels() {
-    const response = await this.service.index();
+  async getPanels({ userId }: { userId: string }) {
+    const response = await this.service.index({ userId });
 
     if (!response.panel) {
       return [];
@@ -21,8 +21,8 @@ export default class PanelController {
     });
   }
 
-  async createPanel(panel: PanelModel) {
-    const response = await this.service.create({ panel: panel.getData(), userId: "1" });
+  async createPanel({ panel, userId }: { panel: PanelModel, userId: string }) {
+    const response = await this.service.create({ panel: panel.getData(), userId });
 
     panel.slug = response.slug;
 
