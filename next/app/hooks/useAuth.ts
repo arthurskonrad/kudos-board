@@ -9,6 +9,10 @@ export type UserType = {
 
 export default function useAuth() {
   const login = ({ userName }: LoginProps) => {
+    if (userName === "") {
+      return null;
+    }
+
     const { UUID4 } = useUUID();
 
     const userId = UUID4();

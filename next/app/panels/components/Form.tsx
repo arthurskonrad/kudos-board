@@ -1,3 +1,6 @@
+"use client";
+
+import { useRouter } from "next/navigation";
 import React, { FormEvent, useState } from "react";
 import Button from "@/app/ui/Button";
 import { CreatePanelProps } from "../hooks/usePanels";
@@ -13,6 +16,8 @@ export default function Form({
   const [clientPassword, setClientPassword] = useState<string>("");
   const [isPasswordValid, setIsPasswordValid] = useState<boolean>();
 
+  const router = useRouter();
+
   const submit = (event: FormEvent) => {
     event.preventDefault();
 
@@ -24,6 +29,12 @@ export default function Form({
     };
 
     createPanel(data);
+
+    router.push("/panels");
+  };
+
+  const redirect = () => {
+    router.push("/panels");
   };
 
   return (
@@ -116,7 +127,8 @@ export default function Form({
         </div>
 
         <div className="flex items-center justify-between">
-          <Button>Criar Painel</Button>
+          <Button onClick={redirect}>Cancelar</Button>
+          <Button onClick={(event) => submit(event)}>Criar Painel</Button>
         </div>
       </form>
     </div>

@@ -1,17 +1,26 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import Panels from "@/app/panels/components/Panels";
-import Form from "@/app/panels/components/Form";
 import { usePanels } from "@/app/panels/hooks/usePanels";
+import Button from "../ui/Button";
 
 export default function page() {
-  const { panels, createPanel } = usePanels();
+  const { panels } = usePanels();
+
+  const router = useRouter();
+
+  const redirect = () => {
+    router.push("/panels/new");
+  };
 
   return (
-    <>
-      <Panels panels={panels} />
+    <div>
+      <div className="mb-4">
+        <Button onClick={redirect}>Criar Painel</Button>
+      </div>
 
-      <Form createPanel={createPanel} />
-    </>
+      <Panels panels={panels} />
+    </div>
   );
 }
