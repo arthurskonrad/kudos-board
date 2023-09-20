@@ -8,7 +8,7 @@ export default function Panel({ panel }: PanelProps) {
   return (
     <li
       key={panel.slug}
-      className="flex gap-4 p-8 mb-8 bg-white shadow-md rounded-lg transition hover:shadow-lg hover:scale-[101%] cursor-pointer"
+      className="flex gap-4 p-8 mb-8 bg-white shadow-md rounded-lg transition cursor-pointer"
     >
       <ul>
         <li>
