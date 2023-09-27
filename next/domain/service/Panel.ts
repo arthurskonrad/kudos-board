@@ -1,21 +1,21 @@
-import { PanelModelType } from "../models/Panel";
+import { PanelModelType } from "@/domain/models/Panel";
 
 type createRequest = {
-  panel: PanelModelType
-  userId: string
-}
+  panel: PanelModelType;
+  userId: string;
+};
 
 export default class PanelService {
   constructor() {}
 
   async index({ userId }: { userId: string }) {
     try {
-      let response = await fetch("/api", {
+      let response = await fetch("/api/panels", {
         headers: {
-          "Accept": "application/json",
+          Accept: "application/json",
           "Content-Type": "application/json",
-          "user-id": userId
-        }
+          "user-id": userId,
+        },
       });
       let json = await response.json();
 
@@ -27,12 +27,12 @@ export default class PanelService {
 
   async create({ panel, userId }: createRequest) {
     try {
-      let response = await fetch("/api", {
+      let response = await fetch("/api/panels", {
         method: "POST",
         headers: {
-          "Accept": "application/json",
+          Accept: "application/json",
           "Content-Type": "application/json",
-          "user-id": userId
+          "user-id": userId,
         },
         body: JSON.stringify(panel),
       });

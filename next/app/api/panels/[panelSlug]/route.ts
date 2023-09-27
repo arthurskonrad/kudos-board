@@ -1,13 +1,13 @@
-import { randomUUID } from "crypto";
+import { NextRequest } from "next/server";
 
-export async function GET(request: Request) {
+export async function GET(request: NextRequest, { params }: any) {
   return new Response(
     JSON.stringify({
       panel: [
         {
           title: "First Panel",
           description: "First Panel Description",
-          slug: randomUUID(),
+          slug: params.panelSlug,
           owner: request.headers.get("user-id"),
           createdAt: new Date(),
           updatedAt: new Date(),
@@ -18,13 +18,4 @@ export async function GET(request: Request) {
       ],
     })
   );
-}
-
-export async function POST(request: Request) {
-  const panel = await request.json();
-
-  panel.slug = randomUUID();
-  panel.owner = request.headers.get("user-id")
-
-  return new Response(JSON.stringify(panel));
 }

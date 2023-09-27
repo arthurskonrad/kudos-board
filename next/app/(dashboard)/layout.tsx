@@ -1,7 +1,7 @@
 "use client";
 
-import useAuth from "../hooks/useAuth";
-import Header from "../ui/Header";
+import useAuth from "@/app/hooks/useAuth";
+import Header from "@/app/ui/Header";
 
 export default function page({ children }: any) {
   const { getUser } = useAuth();
@@ -12,7 +12,7 @@ export default function page({ children }: any) {
     <div>
       <Header userName={userName} />
 
-      <div className="p-8">{children}</div>
+      <div className="p-8 bg-gray-200 min-h-[calc(100vh-56px)]">{children}</div>
     </div>
   );
 }
