@@ -5,6 +5,7 @@ import { useState } from "react";
 
 import useAuth, { UserType } from "../hooks/useAuth";
 
+import Image from "./components/Image";
 import Form from "./components/Form";
 
 export default function page() {
@@ -37,16 +38,14 @@ export default function page() {
     return (
       <div>
         <section className="h-screen">
-          <div className="h-full">
-            <div className="flex h-full md:flex-row flex-col">
-              <div className="bg-[url('/leaves.jpg')] bg-center bg-cover md:w-[50%] md:h-full w-full h-[40%]"></div>
+          <div className="container h-full px-6 py-24">
+            <div className="g-6 flex h-full flex-wrap items-center justify-center lg:justify-between">
+              <div className="mb-12 md:mb-0 md:w-8/12 lg:w-6/12">
+                <Image />
+              </div>
 
-              <div className="md:w-[50%] w-full p-12 flex items-center">
-                <Form
-                  setUserName={setUserName}
-                  userName={userName}
-                  onSubmit={login}
-                />
+              <div className="md:w-8/12 lg:ml-6 lg:w-5/12">
+                <Form updateName={setUserName} onSubmit={login} />
               </div>
             </div>
           </div>
