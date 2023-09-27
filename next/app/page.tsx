@@ -1,45 +1,22 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
-
-import useAuth, { UserType } from "./hooks/useAuth";
+import Anchor from "./ui/Anchor";
 
 export default function Home() {
-  const [userName, setUserName] = useState<string>("");
-  const { getUser, login: authLogin } = useAuth();
+  return (
+    <div className="h-screen bg-white">
+      <div className="bg-[url('/leaves.jpg')] bg-center bg-cover h-[50%] w-screen"></div>
+      <div className="flex justify-center items-center flex-col p-12 xl:ml-60 xl:mr-60 md:ml-20 md:mr-20 ml-10 mr-10 -translate-y-2/4 backdrop-blur-xl shadow-lg text-white lg:text-7xl md:text-5xl text-3xl text-center rounded-3xl">
+        <h1>
+          The best way to kudos{" "}
+          <span className="text-red-500 block">someone you like!</span>
+        </h1>
 
-  const router = useRouter();
-
-  const login = () => {
-    const loggedUser: UserType | null = authLogin({ userName });
-
-    if (!loggedUser) {
-      return;
-    }
-
-    if (loggedUser?.userId) {
-      router.push("/panels");
-    }
-  };
-
-  const user = getUser();
-
-  if (user?.userId) {
-    router.push("/panels");
-  }
-
-  if (!user?.userId) {
-    return (
-      <div>
-        <input
-          type="text"
-          onChange={(event) => setUserName(event.target.value)}
-        />
-        <button onClick={login}>Entrar</button>
+        <div className="mt-12 flex gap-4">
+          <Anchor type="primary" label="Get Started" />
+          <Anchor type="secondary" label="Learn More" />
+        </div>
       </div>
-    );
-  } else {
-    return <div>Loading...</div>;
-  }
+    </div>
+  );
 }
