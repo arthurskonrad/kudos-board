@@ -1,17 +1,15 @@
+"use client";
+
 import React from "react";
 
-import Panel from "@/app/panels/components/Panel";
+import Panel from "@/app/(dashboard)/panels/components/Panel";
 import { PanelModelType } from "@/domain/models/Panel";
 
 type PanelsProps = {
-  panels: PanelModelType[]
-}
+  panels: PanelModelType[];
+};
 
-export default function Panels({panels}: PanelsProps) {
-  if (!panels) {
-    return <p>Carregando...</p>;
-  }
-
+export default function Panels({ panels }: PanelsProps) {
   return (
     <ul>
       {panels.map((panel) => (

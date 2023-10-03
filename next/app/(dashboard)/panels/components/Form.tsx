@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import React, { FormEvent, useState } from "react";
 import Button from "@/app/ui/Button";
-import { CreatePanelProps } from "../hooks/usePanels";
+import { CreatePanelProps } from "@/app/hooks/usePanels";
 
 export default function Form({
   createPanel,
@@ -89,14 +89,14 @@ export default function Form({
             onChange={(event) => setPassword(event.target.value)}
             value={password}
             className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline ${
-              isPasswordValid ? "border-red-500" : ""
+              isPasswordValid ? "border-emerald-500" : ""
             }`}
             id="password"
             type="password"
             placeholder="******************"
           />
           {isPasswordValid && (
-            <p className="text-red-500 text-xs italic">
+            <p className="text-emerald-500 text-xs italic">
               Please choose a password.
             </p>
           )}
@@ -113,14 +113,14 @@ export default function Form({
             onChange={(event) => setClientPassword(event.target.value)}
             value={clientPassword}
             className={`shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-none focus:shadow-outline ${
-              isPasswordValid ? "border-red-500" : ""
+              isPasswordValid ? "border-emerald-500" : ""
             }`}
             id="clientPassword"
             type="password"
             placeholder="******************"
           />
           {isPasswordValid && (
-            <p className="text-red-500 text-xs italic">
+            <p className="text-emerald-500 text-xs italic">
               Please choose a password.
             </p>
           )}
