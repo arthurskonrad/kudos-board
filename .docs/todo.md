@@ -1,4 +1,9 @@
-- página de Panels ter a descrição do painel
+Features
+
+- testar componente com e sem useEffect e quantas vezes ele re-renderiza
+  - PanelHeader
+- desacoplar o estado do useKudos
+- criar um hook que gerencia os estados apenas
 - página de Kudo ter dados do painel
 - criar kudos
 - edição de painel
@@ -12,7 +17,13 @@
   - validação de senha de painel para admin
   - validação de senha de painel para client
   - kudos que tem painel bloqueado por senha, exigir a mesma
+- Loading ter um timeout para apontar erro
 
+-----
+
+Bugs
+
+- Warning do useRouter
 
 -----
 

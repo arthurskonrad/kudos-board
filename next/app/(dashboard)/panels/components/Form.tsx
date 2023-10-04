@@ -28,7 +28,9 @@ export default function Form({
       clientPassword,
     };
 
-    createPanel(data);
+    const newPanel = createPanel(data);
+
+    console.log(newPanel)
 
     router.push("/panels");
   };

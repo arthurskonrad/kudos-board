@@ -1,7 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
-
 import PanelController from "@/domain/controller/Panel";
 import PanelModel from "@/domain/models/Panel";
 import useAuth from "@/app/hooks/useAuth";
@@ -14,22 +12,26 @@ export type CreatePanelProps = {
 };
 
 export const usePanels = () => {
-  const [panels, setPanel] = useState<PanelModel[]>([]);
-
   const { getUser } = useAuth();
   const controller = new PanelController();
 
-  useEffect(() => {
-    const getPanel = async () => {
-      const response = await controller.getPanels({
-        userId: getUser()?.userId,
-      });
+  const getPanels = async () => {
+    const response = await controller.getPanels({
+      userId: getUser()?.userId,
+    });
 
-      setPanel(response);
-    };
+    return response;
+  };
 
-    getPanel();
-  }, []);
+  const findBySlug = async ({
+    panelSlug,
+    userId,
+  }: {
+    panelSlug: string;
+    userId: string;
+  }): Promise<PanelModel | undefined> => {
+    return controller.findBySlug({ panelSlug, userId });
+  };
 
   const createPanel = async ({
     title,
@@ -53,12 +55,8 @@ export const usePanels = () => {
       userId: getUser()?.userId,
     });
 
-    if (!panels) {
-      return setPanel([response]);
-    }
-
-    setPanel([...panels, response]);
+    return response;
   };
 
-  return { panels, createPanel };
+  return { getPanels, createPanel, findBySlug };
 };
