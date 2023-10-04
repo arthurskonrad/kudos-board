@@ -11,7 +11,7 @@ export default function Kudos({ kudos, panelSlug }: KudosProps) {
   return (
     <div>
       {kudos.map((kudo) => (
-        <KudoLink kudo={kudo} panelSlug={panelSlug} />
+        <KudoLink kudo={kudo} panelSlug={panelSlug} key={kudo.slug} />
       ))}
     </div>
   );

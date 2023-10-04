@@ -20,6 +20,22 @@ export default class PanelController {
     });
   }
 
+  async findBySlug({
+    panelSlug,
+    userId,
+  }: {
+    panelSlug: string;
+    userId: string;
+  }): Promise<PanelModel | undefined>  {
+    const panelData = await this.service.findBySlug({ userId, panelSlug });
+
+    if (!panelData) {
+      return ;
+    }
+
+    return new PanelModel(panelData);
+  }
+
   async createPanel({ panel, userId }: { panel: PanelModel; userId: string }) {
     const response = await this.service.create({
       panel: panel.getData(),
