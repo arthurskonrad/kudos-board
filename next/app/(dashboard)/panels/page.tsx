@@ -1,6 +1,3 @@
-"use client";
-
-import { useState, useEffect } from "react";
 import Panels from "@/app/(dashboard)/panels/components/Panels";
 import { usePanels } from "@/app/hooks/usePanels";
 import Anchor from "@/app/ui/Anchor";
@@ -8,18 +5,10 @@ import Loading from "@/app/ui/Loading";
 import LoadingContainer from "@/app/ui/LoadingContainer";
 import PanelModel from "@/domain/models/Panel";
 
-export default function page() {
-  const [panels, setPanels] = useState<PanelModel[]>([]);
-
+export default async function page() {
   const { getPanels } = usePanels();
 
-  useEffect(() => {
-    const getPanel = async () => {
-      setPanels(await getPanels());
-    };
-
-    getPanel();
-  }, []);
+  const panels = await getPanels();
 
   if (!panels) {
     return (

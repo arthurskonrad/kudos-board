@@ -1,9 +1,13 @@
 Features
 
-- testar componente com e sem useEffect e quantas vezes ele re-renderiza
-  - PanelHeader
-- desacoplar o estado do useKudos
+- usar um findKudosBySlug na página do kudos
+- getKudos na pagina de panel
 - criar um hook que gerencia os estados apenas
+
+- JWT para autenticação. Fugir do localhost
+
+- Refatorar kudos no singular
+
 - página de Kudo ter dados do painel
 - criar kudos
 - edição de painel
@@ -30,3 +34,17 @@ Bugs
 Layout
 
 - Visual do kudos na página de painel
+
+
+Rotas do frontend:
+
+panels/
+kudos/slug
+panels/slug
+
+Rotas de backend:
+
+panels/
+kudos/slug
+panels/slug
+panels/slug/kudos

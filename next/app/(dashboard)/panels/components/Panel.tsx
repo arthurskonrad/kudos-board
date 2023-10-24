@@ -1,5 +1,3 @@
-"use client";
-
 import { PanelModelType } from "@/domain/models/Panel";
 import Link from "next/link";
 
@@ -10,7 +8,7 @@ type PanelProps = {
 export default function Panel({ panel }: PanelProps) {
   return (
     <Link href={`/panels/${panel.slug}`}>
-      <li className="flex gap-4 p-8 mb-8 bg-white shadow-md rounded-lg transition cursor-pointer">
+      <li className="flex gap-4 p-8 mb-8 bg-green-50 shadow-md rounded-lg transition cursor-pointer">
         <ul>
           <li>
             <strong>title</strong>: {panel.title}

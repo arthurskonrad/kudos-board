@@ -10,7 +10,7 @@ export default class PanelService {
 
   async index({ userId }: { userId: string }) {
     try {
-      let response = await fetch("/api/panels", {
+      let response = await fetch("http://localhost:3000/api/panels", {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
@@ -27,7 +27,7 @@ export default class PanelService {
 
   async findBySlug({ panelSlug, userId }: { panelSlug: string, userId: string }) {
     try {
-      let response = await fetch(`/api/panels/${panelSlug}`, {
+      let response = await fetch(`http://localhost:3000/api/panels/${panelSlug}`, {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",

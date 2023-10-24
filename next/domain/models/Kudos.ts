@@ -7,6 +7,7 @@ export type KudosModelType = {
   title: string;
   description: string;
   slug?: string;
+  panelSlug: string;
   from: Person;
   to: Person;
   createdAt: Date;
@@ -18,16 +19,18 @@ export default class KudosModel {
   public title: string;
   public description: string;
   public slug?: string;
+  public panelSlug?: string;
   public from: Person;
   public to: Person;
   public createdAt: Date;
   public updatedAt: Date;
   public status: string;
 
-  constructor(public data: KudosModelType) {
+  constructor(data: KudosModelType) {
     this.title = data.title;
     this.description = data.description;
     this.slug = data.slug;
+    this.panelSlug = data.panelSlug;
     this.from = data.from;
     this.to = data.to;
     this.createdAt = data.createdAt;
@@ -40,6 +43,7 @@ export default class KudosModel {
       title: this.title,
       description: this.description,
       slug: this.slug,
+      panelSlug: this.panelSlug,
       from: this.from,
       to: this.to,
       createdAt: this.createdAt,

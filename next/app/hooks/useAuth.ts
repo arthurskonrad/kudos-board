@@ -28,7 +28,7 @@ export default function useAuth() {
   };
 
   const getUser = () => {
-    const user = localStorage.getItem("user");
+    const user = '{"userId":"51f44a35-3c8f-4f07-97d2-79c593c0a60e","userName":"tuio"}';
 
     if (!user) {
       return null;

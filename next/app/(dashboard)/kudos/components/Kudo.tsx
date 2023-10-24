@@ -1,8 +1,8 @@
 import React from "react";
-import { KudosModelType } from "@/domain/models/Kudos";
+import KudosModel from "@/domain/models/Kudos";
 
 type KudoProps = {
-  kudo: KudosModelType;
+  kudo: KudosModel;
 };
 
 export default function Kudo({ kudo }: KudoProps) {

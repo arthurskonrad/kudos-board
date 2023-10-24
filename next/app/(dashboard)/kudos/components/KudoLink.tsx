@@ -4,12 +4,11 @@ import Link from "next/link";
 
 type KudoLinkProps = {
   kudo: KudosModelType;
-  panelSlug: string;
 };
 
-export default function KudoLink({ kudo, panelSlug }: KudoLinkProps) {
+export default function KudoLink({ kudo }: KudoLinkProps) {
   return (
-    <Link href={`/kudos/${panelSlug}/${kudo.slug}`}>
+    <Link href={`/kudos/${kudo.slug}}`}>
       <li
         key={kudo.slug}
         className="flex gap-4 p-8 mb-8 bg-white shadow-md rounded-lg transition cursor-pointer"
