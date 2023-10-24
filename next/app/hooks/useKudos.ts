@@ -1,53 +1,33 @@
-"use client";
-
-import { useEffect, useState } from "react";
-
 import KudosController from "@/domain/controller/Kudos";
-import { KudosModelType } from "@/domain/models/Kudos";
 import useAuth from "@/app/hooks/useAuth";
+import KudosModel from "@/domain/models/Kudos";
 
-export const useKudos = ({
-  panelSlug,
-  kudoSlug,
-}: {
-  panelSlug?: string;
-  kudoSlug?: string;
-}) => {
-  const [kudos, setKudos] = useState<KudosModelType[]>([]);
-
+export const useKudos = () => {
   const { getUser } = useAuth();
   const controller = new KudosController();
 
-  useEffect(() => {
+  const getKudos = async ({ panelSlug }: { panelSlug?: string }) => {
     if (!panelSlug) {
       return;
     }
 
-    const getKudos = async () => {
-      const response = await controller.getKudos({
-        userId: getUser()?.userId,
-        panelSlug,
-      });
+    const response = await controller.getKudos({
+      userId: getUser()?.userId,
+      panelSlug,
+    });
 
-      setKudos(response);
-    };
-
-    getKudos();
-  }, []);
-
-  const getKudo = () => {
-    if (kudos.length <= 0) {
-      return;
-    }
-
-    const kudo = kudos.filter((kudo) => kudo.slug === kudoSlug);
-
-    if (kudo.length <= 0) {
-      return;
-    }
-
-    return kudo[0];
+    return response;
   };
 
-  return { kudos, getKudo };
+  const findBySlug = async ({
+    kudoSlug,
+    userId,
+  }: {
+    kudoSlug: string;
+    userId: string;
+  }): Promise<KudosModel | undefined> => {
+    return controller.findBySlug({ kudoSlug, userId });
+  };
+
+  return { getKudos, findBySlug };
 };

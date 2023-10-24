@@ -1,5 +1,3 @@
-"use client";
-
 import useAuth from "@/app/hooks/useAuth";
 import Header from "@/app/ui/Header";
 

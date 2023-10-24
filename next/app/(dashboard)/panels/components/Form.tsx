@@ -30,8 +30,6 @@ export default function Form({
 
     const newPanel = createPanel(data);
 
-    console.log(newPanel)
-
     router.push("/panels");
   };
 

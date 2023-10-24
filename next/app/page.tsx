@@ -1,5 +1,3 @@
-"use client";
-
 import Anchor from "./ui/Anchor";
 
 export default function Home() {

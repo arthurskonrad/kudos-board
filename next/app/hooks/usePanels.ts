@@ -1,5 +1,3 @@
-"use client";
-
 import PanelController from "@/domain/controller/Panel";
 import PanelModel from "@/domain/models/Panel";
 import useAuth from "@/app/hooks/useAuth";

@@ -21,7 +21,7 @@ export default class PanelModel {
   public clientPassword: string;
   public status: string;
 
-  constructor(public data: PanelModelType) {
+  constructor(data: PanelModelType) {
     this.title = data.title;
     this.description = data.description;
     this.slug = data.slug;
