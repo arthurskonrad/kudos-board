@@ -1,22 +1,25 @@
 import React from "react";
-import { useKudos } from "@/app/hooks/useKudos";
+import { UseKudos } from "@/app/hooks/UseKudos";
 import Kudo from "@/app/(dashboard)/kudos/components/Kudo";
 import KudosModel, { KudosModelType } from "@/domain/models/Kudos";
-import useAuth from "@/app/hooks/useAuth";
-import { usePanels } from "@/app/hooks/usePanels";
+import UseAuth from "@/app/hooks/UseAuth";
+import { UsePanels } from "@/app/hooks/UsePanels";
 import Panel from "../../panels/components/Panel";
 
 export default async function page({ params }: any) {
   const kudoSlug: string =
     typeof params.kudoSlug === "object" ? params.kudoSlug[0] : params.kudoSlug;
 
-  const { findBySlug: findKudosBySlug } = useKudos();
-  const { findBySlug } = usePanels();
-  const { getUser } = useAuth();
+  const { findBySlug: findKudosBySlug } = UseKudos();
+  const { findBySlug } = UsePanels();
+  const { getUser } = UseAuth();
 
   const userId = getUser()?.userId;
 
-  const kudos: KudosModel | undefined = await findKudosBySlug({ kudoSlug, userId })
+  const kudos: KudosModel | undefined = await findKudosBySlug({
+    kudoSlug,
+    userId,
+  });
 
   const getPanel = async () => {
     const newPanel = await findBySlug({

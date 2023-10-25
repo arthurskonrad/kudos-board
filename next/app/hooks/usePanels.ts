@@ -1,6 +1,6 @@
 import PanelController from "@/domain/controller/Panel";
 import PanelModel from "@/domain/models/Panel";
-import useAuth from "@/app/hooks/useAuth";
+import UseAuth from "@/app/hooks/UseAuth";
 
 export type CreatePanelProps = {
   title: string;
@@ -9,8 +9,8 @@ export type CreatePanelProps = {
   clientPassword: string;
 };
 
-export const usePanels = () => {
-  const { getUser } = useAuth();
+export const UsePanels = () => {
+  const { getUser } = UseAuth();
   const controller = new PanelController();
 
   const getPanels = async () => {

@@ -1,9 +1,9 @@
 import KudosController from "@/domain/controller/Kudos";
-import useAuth from "@/app/hooks/useAuth";
+import UseAuth from "@/app/hooks/UseAuth";
 import KudosModel from "@/domain/models/Kudos";
 
-export const useKudos = () => {
-  const { getUser } = useAuth();
+export const UseKudos = () => {
+  const { getUser } = UseAuth();
   const controller = new KudosController();
 
   const getKudos = async ({ panelSlug }: { panelSlug?: string }) => {

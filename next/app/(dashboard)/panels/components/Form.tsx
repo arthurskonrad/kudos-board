@@ -3,7 +3,7 @@
 import { useRouter } from "next/navigation";
 import React, { FormEvent, useState } from "react";
 import Button from "@/app/ui/Button";
-import { CreatePanelProps } from "@/app/hooks/usePanels";
+import { CreatePanelProps } from "@/app/hooks/UsePanels";
 
 export default function Form({
   createPanel,

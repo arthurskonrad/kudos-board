@@ -1,8 +1,8 @@
-import useAuth from "@/app/hooks/useAuth";
+import UseAuth from "@/app/hooks/UseAuth";
 import Header from "@/app/ui/Header";
 
 export default function page({ children }: any) {
-  const { getUser } = useAuth();
+  const { getUser } = UseAuth();
 
   const userName = getUser().userName;
 

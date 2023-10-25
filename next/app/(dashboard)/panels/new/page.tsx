@@ -3,10 +3,10 @@
 import React from "react";
 
 import Form from "@/app/(dashboard)/panels/components/Form";
-import { usePanels } from "@/app/hooks/usePanels";
+import { UsePanels } from "@/app/hooks/UsePanels";
 
 export default function page() {
-  const { createPanel } = usePanels();
+  const { createPanel } = UsePanels();
 
   return (
     <div>

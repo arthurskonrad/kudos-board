@@ -1,21 +1,21 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useRouter as UseRouter } from "next/navigation";
+import { useState as UseState } from "react";
 
-import useAuth, { UserType } from "@/app/hooks/useAuth";
+import UseAuth, { UserType } from "@/app/hooks/UseAuth";
 
 import Form from "@/app/login/components/Form";
 import LoadingContainer from "@/app/ui/LoadingContainer";
 import Loading from "@/app/ui/Loading";
 
 export default function page() {
-  const [userName, setUserName] = useState<string>("");
-  const [authLoading, setAuthLoading] = useState(true);
+  const [userName, setUserName] = UseState<string>("");
+  const [authLoading, setAuthLoading] = UseState(true);
 
-  const { getUser, login: authLogin } = useAuth();
+  const { getUser, login: authLogin } = UseAuth();
 
-  const router = useRouter();
+  const router = UseRouter();
 
   const login = (event: React.FormEvent<HTMLFormElement>) => {
     setAuthLoading(true);

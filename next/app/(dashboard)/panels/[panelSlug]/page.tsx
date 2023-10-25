@@ -1,13 +1,13 @@
 import React from "react";
-import { usePanels } from "@/app/hooks/usePanels";
-import { useKudos } from "@/app/hooks/useKudos";
+import { UsePanels } from "@/app/hooks/UsePanels";
+import { UseKudos } from "@/app/hooks/UseKudos";
 import Kudos from "@/app/(dashboard)/kudos/components/Kudos";
-import useAuth from "@/app/hooks/useAuth";
+import UseAuth from "@/app/hooks/UseAuth";
 import Panel from "../components/Panel";
 
 export default async function page({ params }: any) {
-  const { findBySlug } = usePanels();
-  const { getUser } = useAuth();
+  const { findBySlug } = UsePanels();
+  const { getUser } = UseAuth();
 
   const panelSlug: string =
     typeof params.panelSlug === "object"
@@ -29,7 +29,7 @@ export default async function page({ params }: any) {
 
   const panel = await getPanel();
 
-  const { getKudos } = useKudos();
+  const { getKudos } = UseKudos();
 
   const kudos = await getKudos({ panelSlug });
 
@@ -39,7 +39,7 @@ export default async function page({ params }: any) {
 
   return (
     <>
-      <Panel panel={panel}/>
+      <Panel panel={panel} />
       <Kudos kudos={kudos} panelSlug={panelSlug} />
     </>
   );
