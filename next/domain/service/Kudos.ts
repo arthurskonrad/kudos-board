@@ -1,3 +1,10 @@
+import { KudosModelType } from "../models/Kudos";
+
+export type createRequest = {
+  kudosData: KudosModelType;
+  userId: string;
+};
+
 export default class KudosService {
   constructor() {}
 
@@ -32,6 +39,27 @@ export default class KudosService {
       return json;
     } catch (error) {
       console.error("Ocorreu um erro ao buscar os dados:", error);
+    }
+  }
+
+
+  async create({ kudosData, userId }: createRequest) {
+    try {
+      let response = await fetch("/api/kudos", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "user-id": userId,
+        },
+        body: JSON.stringify(kudosData),
+      });
+
+      let json = await response.json();
+
+      return json;
+    } catch (error) {
+      console.error("Ocorreu um erro ao salvar os dados:", error);
     }
   }
 }
