@@ -1,15 +1,9 @@
 Features
 
-- usar um findKudosBySlug na página do kudos
-- getKudos na pagina de panel
-- criar um hook que gerencia os estados apenas
-
-- JWT para autenticação. Fugir do localhost
-
-- Refatorar kudos no singular
-
-- página de Kudo ter dados do painel
 - criar kudos
+  - Service e Controller
+- Refatorar Controller createPanel para não usar a model ao evocar o service
+- Refatorar o Hook do createPanel
 - edição de painel
   - na pagina de painel e no detalhamento
 - edição de kudos
@@ -31,10 +25,22 @@ Bugs
 
 -----
 
+Chores
+
+- JWT para autenticação. Fugir do localhost
+- Refatorar kudos no singular
+- Login location na build (useRouter)
+- Paginação para paineis e kudos
+
+-----
+
 Layout
 
 - Visual do kudos na página de painel
 
+-----
+
+Notes
 
 Rotas do frontend:
 

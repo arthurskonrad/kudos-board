@@ -9,7 +9,7 @@ export type KudosModelType = {
   slug?: string;
   panelSlug: string;
   from: Person;
-  to: Person;
+  to: string;
   createdAt: Date;
   updatedAt: Date;
   status: string;
@@ -21,7 +21,7 @@ export default class KudosModel {
   public slug?: string;
   public panelSlug?: string;
   public from: Person;
-  public to: Person;
+  public to: string;
   public createdAt: Date;
   public updatedAt: Date;
   public status: string;

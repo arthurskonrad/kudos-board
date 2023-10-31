@@ -1,6 +1,7 @@
 import KudosController from "@/domain/controller/Kudos";
 import UseAuth from "@/app/hooks/UseAuth";
 import KudosModel from "@/domain/models/Kudos";
+import { createRequest } from "@/domain/service/Kudos";
 
 export const UseKudos = () => {
   const { getUser } = UseAuth();
@@ -29,5 +30,11 @@ export const UseKudos = () => {
     return controller.findBySlug({ kudoSlug, userId });
   };
 
-  return { getKudos, findBySlug };
+  const createKudos = async ({ kudosData, userId }: createRequest) => {
+    const kudos = await controller.createKudos({ kudosData, userId });
+
+    return kudos
+  }
+
+  return { getKudos, findBySlug, createKudos };
 };

@@ -1,5 +1,5 @@
 import KudosModel, { KudosModelType } from "@/domain/models/Kudos";
-import KudosService from "@/domain/service/Kudos";
+import KudosService, { createRequest } from "@/domain/service/Kudos";
 
 export default class KudosController {
   public service: KudosService;
@@ -34,5 +34,16 @@ export default class KudosController {
     }
 
     return new KudosModel(kudosData);
+  }
+
+  async createKudos({ kudosData, userId }: createRequest) {
+    const response = await this.service.create({
+      kudosData,
+      userId,
+    });
+
+    kudosData.slug = response.slug;
+
+    return kudosData;
   }
 }

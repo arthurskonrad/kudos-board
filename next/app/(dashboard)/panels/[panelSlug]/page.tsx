@@ -4,6 +4,7 @@ import { UseKudos } from "@/app/hooks/UseKudos";
 import Kudos from "@/app/(dashboard)/kudos/components/Kudos";
 import UseAuth from "@/app/hooks/UseAuth";
 import Panel from "../components/Panel";
+import Anchor from "@/app/ui/Anchor";
 
 export default async function page({ params }: any) {
   const { findBySlug } = UsePanels();
@@ -39,6 +40,12 @@ export default async function page({ params }: any) {
 
   return (
     <>
+      <div className="mb-4">
+        <Anchor type="primary" href={`/kudos/new/${panelSlug}`}>
+          Criar Kudos
+        </Anchor>
+      </div>
+
       <Panel panel={panel} />
       <Kudos kudos={kudos} panelSlug={panelSlug} />
     </>
