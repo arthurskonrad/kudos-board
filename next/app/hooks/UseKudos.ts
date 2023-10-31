@@ -31,7 +31,7 @@ export const UseKudos = () => {
   };
 
   const createKudos = async ({ kudosData, userId }: createRequest) => {
-    const kudos = await controller.createKudos({ kudosData, userId });
+    const kudos: KudosModel = await controller.createKudos({ kudosData, userId });
 
     return kudos
   }

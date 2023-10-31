@@ -1,6 +1,6 @@
 import { PanelModelType } from "@/domain/models/Panel";
 
-type createRequest = {
+export type createRequest = {
   panel: PanelModelType;
   userId: string;
 };

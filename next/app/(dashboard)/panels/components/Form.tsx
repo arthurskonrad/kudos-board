@@ -18,7 +18,7 @@ export default function Form({
 
   const router = useRouter();
 
-  const submit = (event: FormEvent) => {
+  const submit = async (event: FormEvent) => {
     event.preventDefault();
 
     const data = {
@@ -28,7 +28,9 @@ export default function Form({
       clientPassword,
     };
 
-    const newPanel = createPanel(data);
+    const newPanel = await createPanel(data);
+
+    console.log(newPanel)
 
     router.push("/panels");
   };

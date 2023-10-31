@@ -18,7 +18,7 @@ export default function Form({
 
   const router = useRouter();
 
-  const submit = (event: any) => {
+  const submit = async (event: any) => {
     event.preventDefault();
 
     const kudosData = {
@@ -32,7 +32,9 @@ export default function Form({
       panelSlug,
     };
 
-    const newKudos = createKudos({ kudosData, userId: getUser().userId });
+    const newKudos = await createKudos({ kudosData, userId: getUser().userId });
+
+    console.log(newKudos);
 
     redirect();
   };
