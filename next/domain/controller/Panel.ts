@@ -1,5 +1,5 @@
 import PanelModel from "@/domain/models/Panel";
-import PanelService from "@/domain/service/Panel";
+import PanelService, { createRequest } from "@/domain/service/Panel";
 
 export default class PanelController {
   public service: PanelService;
@@ -36,14 +36,14 @@ export default class PanelController {
     return new PanelModel(panelData);
   }
 
-  async createPanel({ panel, userId }: { panel: PanelModel; userId: string }) {
+  async createPanel({ panel, userId }: createRequest) {
     const response = await this.service.create({
-      panel: panel.getData(),
+      panel,
       userId,
     });
 
     panel.slug = response.slug;
 
-    return panel;
+    return new PanelModel(panel);
   }
 }

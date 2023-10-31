@@ -44,6 +44,6 @@ export default class KudosController {
 
     kudosData.slug = response.slug;
 
-    return kudosData;
+    return new KudosModel(kudosData);
   }
 }

@@ -1,9 +1,5 @@
 Features
 
-- criar kudos
-  - Service e Controller
-- Refatorar Controller createPanel para não usar a model ao evocar o service
-- Refatorar o Hook do createPanel
 - edição de painel
   - na pagina de painel e no detalhamento
 - edição de kudos

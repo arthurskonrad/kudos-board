@@ -37,7 +37,7 @@ export const UsePanels = () => {
     password,
     clientPassword,
   }: CreatePanelProps) => {
-    const panel = new PanelModel({
+    const panel = {
       title,
       description,
       owner: getUser()?.userId, // Todo refactorar este parametro
@@ -46,7 +46,7 @@ export const UsePanels = () => {
       password,
       clientPassword,
       status: "ACTIVE",
-    });
+    };
 
     const response = await controller.createPanel({
       panel,
