@@ -2,24 +2,24 @@ export type PanelModelType = {
   title: string;
   description: string;
   slug?: string;
-  owner: string;
-  createdAt: Date;
-  updatedAt: Date;
+  owner?: string;
+  createdAt?: Date;
+  updatedAt?: Date;
   password: string;
   clientPassword: string;
-  status: string;
+  status?: string;
 };
 
 export default class PanelModel {
   public title: string;
   public description: string;
   public slug?: string;
-  public owner: string;
-  public createdAt: Date;
-  public updatedAt: Date;
+  public owner?: string;
+  public createdAt?: Date;
+  public updatedAt?: Date;
   public password: string;
   public clientPassword: string;
-  public status: string;
+  public status?: string;
 
   constructor(data: PanelModelType) {
     this.title = data.title;

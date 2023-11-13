@@ -5,6 +5,12 @@ export type createRequest = {
   userId: string;
 };
 
+export type updateRequest = {
+  panelSlug: string;
+  data: PanelModelType;
+  userId: string;
+};
+
 export default class PanelService {
   constructor() {}
 
@@ -25,15 +31,24 @@ export default class PanelService {
     }
   }
 
-  async findBySlug({ panelSlug, userId }: { panelSlug: string, userId: string }) {
+  async findBySlug({
+    panelSlug,
+    userId,
+  }: {
+    panelSlug: string;
+    userId: string;
+  }) {
     try {
-      let response = await fetch(`http://localhost:3000/api/panels/${panelSlug}`, {
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          "user-id": userId,
-        },
-      });
+      let response = await fetch(
+        `http://localhost:3000/api/panels/${panelSlug}`,
+        {
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            "user-id": userId,
+          },
+        }
+      );
       let json = await response.json();
 
       return json;
@@ -52,6 +67,26 @@ export default class PanelService {
           "user-id": userId,
         },
         body: JSON.stringify(panel),
+      });
+
+      let json = await response.json();
+
+      return json;
+    } catch (error) {
+      console.error("Ocorreu um erro ao salvar os dados:", error);
+    }
+  }
+
+  async update({ panelSlug, data, userId }: updateRequest) {
+    try {
+      let response = await fetch(`/api/panels/${panelSlug}`, {
+        method: "PUT",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "user-id": userId,
+        },
+        body: JSON.stringify(data),
       });
 
       let json = await response.json();

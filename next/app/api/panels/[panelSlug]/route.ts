@@ -15,3 +15,9 @@ export async function GET(request: NextRequest, { params }: any) {
     })
   );
 }
+
+export async function PUT(request: NextRequest) {
+  const panel = await request.json();
+
+  return new Response(JSON.stringify(panel));
+}

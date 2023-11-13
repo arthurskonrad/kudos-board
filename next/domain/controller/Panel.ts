@@ -1,5 +1,5 @@
 import PanelModel from "@/domain/models/Panel";
-import PanelService, { createRequest } from "@/domain/service/Panel";
+import PanelService, { createRequest, updateRequest } from "@/domain/service/Panel";
 
 export default class PanelController {
   public service: PanelService;
@@ -43,6 +43,16 @@ export default class PanelController {
     });
 
     panel.slug = response.slug;
+
+    return new PanelModel(panel);
+  }
+
+  async updatePanel({ panelSlug, data, userId }: updateRequest) {
+    const panel = await this.service.update({
+      panelSlug,
+      data,
+      userId,
+    });
 
     return new PanelModel(panel);
   }

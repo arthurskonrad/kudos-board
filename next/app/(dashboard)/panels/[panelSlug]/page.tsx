@@ -40,8 +40,12 @@ export default async function page({ params }: any) {
 
   return (
     <>
-      <div className="mb-4">
-        <Anchor type="primary" href={`/kudos/new/${panelSlug}`}>
+      <div className="mb-4 flex gap-4">
+        <Anchor type="primary" href={`/panels/${panelSlug}/edit`}>
+          Editar Painel
+        </Anchor>
+
+        <Anchor type="secondary" href={`/kudos/new/${panelSlug}`}>
           Criar Kudos
         </Anchor>
       </div>
