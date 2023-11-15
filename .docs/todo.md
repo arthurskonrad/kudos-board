@@ -1,7 +1,5 @@
 Features
 
-- edição de painel
-  - na pagina de painel e no detalhamento
 - edição de kudos
   - na pagina de kudos e no detalhamento
 - rota de paineis arquivados
@@ -12,6 +10,12 @@ Features
   - validação de senha de painel para client
   - kudos que tem painel bloqueado por senha, exigir a mesma
 - Loading ter um timeout para apontar erro
+
+-----
+
+Fix
+
+- Adicionar tipo da action nos forms
 
 -----
 
