@@ -5,6 +5,7 @@ import KudosModel, { KudosModelType } from "@/domain/models/Kudos";
 import UseAuth from "@/app/hooks/UseAuth";
 import { UsePanels } from "@/app/hooks/UsePanels";
 import Panel from "../../panels/components/Panel";
+import Anchor from "@/app/ui/Anchor";
 
 export default async function page({ params }: any) {
   const kudoSlug: string =
@@ -46,6 +47,12 @@ export default async function page({ params }: any) {
 
   return (
     <>
+      <div className="mb-4 flex gap-4">
+        <Anchor type="primary" href={`/kudos/${kudoSlug}/edit`}>
+          Editar Kudos
+        </Anchor>
+      </div>
+
       <Panel panel={panel} />
       <Kudo kudo={kudos} />
     </>

@@ -1,7 +1,7 @@
 import KudosController from "@/domain/controller/Kudos";
 import UseAuth from "@/app/hooks/UseAuth";
-import KudosModel from "@/domain/models/Kudos";
-import { createRequest } from "@/domain/service/Kudos";
+import KudosModel, { KudosModelType } from "@/domain/models/Kudos";
+import { createRequest, updateRequest } from "@/domain/service/Kudos";
 
 export const UseKudos = () => {
   const { getUser } = UseAuth();
@@ -36,5 +36,15 @@ export const UseKudos = () => {
     return kudos
   }
 
-  return { getKudos, findBySlug, createKudos };
+  const updateKudos = async ({ kudosSlug, data, userId }: updateRequest) => {
+    const response = await controller.updateKudos({
+      kudosSlug,
+      data,
+      userId,
+    });
+
+    return response;
+  }
+
+  return { getKudos, findBySlug, createKudos, updateKudos };
 };

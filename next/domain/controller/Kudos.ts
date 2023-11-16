@@ -1,5 +1,8 @@
 import KudosModel, { KudosModelType } from "@/domain/models/Kudos";
-import KudosService, { createRequest } from "@/domain/service/Kudos";
+import KudosService, {
+  createRequest,
+  updateRequest,
+} from "@/domain/service/Kudos";
 
 export default class KudosController {
   public service: KudosService;
@@ -26,11 +29,11 @@ export default class KudosController {
   }: {
     kudoSlug: string;
     userId: string;
-  }): Promise<KudosModel | undefined>  {
+  }): Promise<KudosModel | undefined> {
     const kudosData = await this.service.findBySlug({ userId, kudoSlug });
 
     if (!kudosData) {
-      return ;
+      return;
     }
 
     return new KudosModel(kudosData);
@@ -45,5 +48,15 @@ export default class KudosController {
     kudosData.slug = response.slug;
 
     return new KudosModel(kudosData);
+  }
+
+  async updateKudos({ kudosSlug, data, userId }: updateRequest) {
+    const response = await this.service.update({
+      kudosSlug,
+      data,
+      userId,
+    });
+
+    return new KudosModel(response);
   }
 }
