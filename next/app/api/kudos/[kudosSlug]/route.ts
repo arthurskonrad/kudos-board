@@ -7,10 +7,7 @@ export async function GET(request: NextRequest, { params }: any) {
         name: "from name",
         id: "1",
       },
-      to: {
-        name: "to name",
-        id: "2",
-      },
+      to: "to name",
       title: "Kudos title",
       description: "Kudos description",
       slug: params.kudosSlug,
@@ -20,4 +17,10 @@ export async function GET(request: NextRequest, { params }: any) {
       status: "ACTIVE",
     })
   );
+}
+
+export async function PUT(request: NextRequest) {
+  const kudos = await request.json();
+
+  return new Response(JSON.stringify(kudos));
 }
