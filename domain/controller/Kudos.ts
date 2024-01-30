@@ -1,8 +1,5 @@
-import KudosModel, { KudosModelType } from "@/domain/models/Kudos";
-import KudosService, {
-  createRequest,
-  updateRequest,
-} from "@/domain/service/Kudos";
+import KudosModel, { KudosModelType } from "../models/Kudos";
+import KudosService, { createRequest, updateRequest } from "../service/Kudos";
 
 export default class KudosController {
   public service: KudosService;

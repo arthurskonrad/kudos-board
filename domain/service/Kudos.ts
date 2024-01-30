@@ -6,10 +6,10 @@ export type createRequest = {
 };
 
 export type updateKudosModelType = {
-  title: string,
-  description: string,
-  to: string,
-}
+  title: string;
+  description: string;
+  to: string;
+};
 
 export type updateRequest = {
   kudosSlug: string;

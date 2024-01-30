@@ -1,4 +1,4 @@
-import { PanelModelType } from "@/domain/models/Panel";
+import { PanelModelType } from "../models/Panel";
 
 export type createRequest = {
   panel: PanelModelType;
