@@ -1,5 +1,5 @@
-import PanelModel from "@/domain/models/Panel";
-import PanelService, { createRequest, updateRequest } from "@/domain/service/Panel";
+import PanelModel from "../models/Panel";
+import PanelService, { createRequest, updateRequest } from "../service/Panel";
 
 export default class PanelController {
   public service: PanelService;
@@ -26,11 +26,11 @@ export default class PanelController {
   }: {
     panelSlug: string;
     userId: string;
-  }): Promise<PanelModel | undefined>  {
+  }): Promise<PanelModel | undefined> {
     const panelData = await this.service.findBySlug({ userId, panelSlug });
 
     if (!panelData) {
-      return ;
+      return;
     }
 
     return new PanelModel(panelData);

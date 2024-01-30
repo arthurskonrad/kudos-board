@@ -5,8 +5,8 @@ import { useRouter } from "next/navigation";
 
 import UseAuth from "@/app/hooks/UseAuth";
 import Button from "@/app/ui/Button";
-import KudosModel from "@/domain/models/Kudos";
-import { updateRequest } from "@/domain/service/Kudos";
+import KudosModel from "../../../../../domain/models/Kudos";
+import { updateRequest } from "../../../../../domain/service/Kudos";
 
 export default function EditKudos({
   updateKudos,

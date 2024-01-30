@@ -3,7 +3,7 @@
 import React from "react";
 
 import Panel from "@/app/(dashboard)/panels/components/Panel";
-import { PanelModelType } from "@/domain/models/Panel";
+import { PanelModelType } from "../../../../../domain/models/Panel";
 
 type PanelsProps = {
   panels: PanelModelType[];

@@ -1,5 +1,5 @@
 import React from "react";
-import { KudosModelType } from "@/domain/models/Kudos";
+import { KudosModelType } from "../../../../../domain/models/Kudos";
 import Link from "next/link";
 
 type KudoLinkProps = {

@@ -1,5 +1,5 @@
 import React from "react";
-import KudosModel from "@/domain/models/Kudos";
+import KudosModel from "../../../../../domain/models/Kudos";
 
 type KudoProps = {
   kudo: KudosModel;
@@ -22,7 +22,7 @@ export default function Kudo({ kudo }: KudoProps) {
           <strong>from</strong>: {kudo.from.name}
         </li>
         <li>
-          <strong>to</strong>: {kudo.to.name}
+          <strong>to</strong>: {kudo.to}
         </li>
         <li>
           <strong>createdAt</strong>: {kudo.createdAt.toString()}

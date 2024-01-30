@@ -1,5 +1,5 @@
-import PanelController from "@/domain/controller/Panel";
-import PanelModel from "@/domain/models/Panel";
+import PanelController from "../../../domain/controller/Panel";
+import PanelModel from "../../../domain/models/Panel";
 import UseAuth from "@/app/hooks/UseAuth";
 
 export type CreatePanelProps = {

@@ -1,7 +1,7 @@
-import KudosController from "@/domain/controller/Kudos";
+import KudosController from "../../../domain/controller/Kudos";
 import UseAuth from "@/app/hooks/UseAuth";
-import KudosModel, { KudosModelType } from "@/domain/models/Kudos";
-import { createRequest, updateRequest } from "@/domain/service/Kudos";
+import KudosModel, { KudosModelType } from "../../../domain/models/Kudos";
+import { createRequest, updateRequest } from "../../../domain/service/Kudos";
 
 export const UseKudos = () => {
   const { getUser } = UseAuth();

@@ -3,7 +3,6 @@ import { UsePanels } from "@/app/hooks/UsePanels";
 import Anchor from "@/app/ui/Anchor";
 import Loading from "@/app/ui/Loading";
 import LoadingContainer from "@/app/ui/LoadingContainer";
-import PanelModel from "@/domain/models/Panel";
 
 export default async function page() {
   const { getPanels } = UsePanels();

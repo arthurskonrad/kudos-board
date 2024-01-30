@@ -1,4 +1,4 @@
-import { PanelModelType } from "@/domain/models/Panel";
+import { PanelModelType } from "../../../../../domain/models/Panel";
 import Link from "next/link";
 
 type PanelProps = {
@@ -23,10 +23,10 @@ export default function Panel({ panel }: PanelProps) {
             <strong>owner</strong>: {panel.owner}
           </li>
           <li>
-            <strong>createdAt</strong>: {panel.createdAt.toString()}
+            <strong>createdAt</strong>: {panel.createdAt?.toString()}
           </li>
           <li>
-            <strong>updatedAt</strong>: {panel.updatedAt.toString()}
+            <strong>updatedAt</strong>: {panel.updatedAt?.toString()}
           </li>
           <li>
             <strong>password</strong>: {panel.password}

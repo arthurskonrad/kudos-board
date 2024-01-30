@@ -1,7 +1,7 @@
 import React from "react";
 import { UseKudos } from "@/app/hooks/UseKudos";
 import Kudo from "@/app/(dashboard)/kudos/components/Kudo";
-import KudosModel, { KudosModelType } from "@/domain/models/Kudos";
+import KudosModel, { KudosModelType } from "../../../../../domain/models/Kudos";
 import UseAuth from "@/app/hooks/UseAuth";
 import { UsePanels } from "@/app/hooks/UsePanels";
 import Panel from "../../panels/components/Panel";

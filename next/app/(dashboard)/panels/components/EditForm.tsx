@@ -4,7 +4,7 @@ import { useRouter } from "next/navigation";
 import React, { FormEvent, useState } from "react";
 import Button from "@/app/ui/Button";
 import { UpdatePanelProps } from "@/app/hooks/UsePanels";
-import PanelModel from "@/domain/models/Panel";
+import PanelModel from "../../../../../domain/models/Panel";
 
 export default function Form({
   updatePanel,
