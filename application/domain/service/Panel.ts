@@ -16,16 +16,15 @@ export default class PanelService {
 
   async index({ userId }: { userId: string }) {
     try {
-      let response = await fetch("http://localhost:3000/api/panels", {
+      const response = await fetch("http://mock-api:8080/panel", {
         headers: {
           Accept: "application/json",
           "Content-Type": "application/json",
           "user-id": userId,
         },
       });
-      let json = await response.json();
 
-      return json;
+      return await response.json();
     } catch (error) {
       console.error("Ocorreu um erro ao buscar os dados:", error);
     }
@@ -39,19 +38,14 @@ export default class PanelService {
     userId: string;
   }) {
     try {
-      let response = await fetch(
-        `http://localhost:3000/api/panels/${panelSlug}`,
-        {
-          headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
-            "user-id": userId,
-          },
-        }
-      );
-      let json = await response.json();
-
-      return json;
+      const response = await fetch(`http://mock-api:8080/panels/${panelSlug}`, {
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "user-id": userId,
+        },
+      });
+      return await response.json();
     } catch (error) {
       console.error("Ocorreu um erro ao buscar os dados:", error);
     }
@@ -59,7 +53,7 @@ export default class PanelService {
 
   async create({ panel, userId }: createRequest) {
     try {
-      let response = await fetch("/api/panels", {
+      const response = await fetch("http://mock-api:8080/api/panels", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -69,9 +63,7 @@ export default class PanelService {
         body: JSON.stringify(panel),
       });
 
-      let json = await response.json();
-
-      return json;
+      return await response.json();
     } catch (error) {
       console.error("Ocorreu um erro ao salvar os dados:", error);
     }
@@ -79,19 +71,20 @@ export default class PanelService {
 
   async update({ panelSlug, data, userId }: updateRequest) {
     try {
-      let response = await fetch(`/api/panels/${panelSlug}`, {
-        method: "PUT",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          "user-id": userId,
+      const response = await fetch(
+        `http://mock-api:8080/api/panels/${panelSlug}`,
+        {
+          method: "PUT",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            "user-id": userId,
+          },
+          body: JSON.stringify(data),
         },
-        body: JSON.stringify(data),
-      });
+      );
 
-      let json = await response.json();
-
-      return json;
+      return await response.json();
     } catch (error) {
       console.error("Ocorreu um erro ao salvar os dados:", error);
     }

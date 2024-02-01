@@ -31,13 +31,14 @@ services:
       context: ./.docker/build/app
       dockerfile: Dockerfile
     volumes:
-      - ./next/:/var/www
-    command: /bin/sh -c "npm install && npm run dev"
+      - ./application/:/var/www
+    command: /bin/sh -c "npm install && npm run dev:host"
+    tty: true
     labels:
       - "traefik.enable=true"
       - "traefik.http.routers.kudosboard.tls=true"
       - "traefik.http.routers.kudosboard.rule=Host(`kudosboard.local`)"
-      - "traefik.http.services.web.loadbalancer.server.port=3000"
+      - "traefik.http.services.web.loadbalancer.server.port=5173"
 
   mock-api:
     image: muonsoft/openapi-mock

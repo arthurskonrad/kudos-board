@@ -21,17 +21,17 @@ export default class KudosService {
 
   async index({ userId, panelSlug }: { userId: string; panelSlug: string }) {
     try {
-      let response = await fetch(
-        `http://localhost:3000/api/panels/${panelSlug}/kudos`,
+      const response = await fetch(
+        `http://mock-api:8080/api/panels/${panelSlug}/kudos`,
         {
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
             "user-id": userId,
           },
-        }
+        },
       );
-      let json = await response.json();
+      const json = await response.json();
 
       return json;
     } catch (error) {
@@ -39,21 +39,25 @@ export default class KudosService {
     }
   }
 
-  async findBySlug({ kudoSlug, userId }: { kudoSlug: string; userId: string }) {
+  async findBySlug({
+    kudosSlug,
+    userId,
+  }: {
+    kudosSlug: string;
+    userId: string;
+  }) {
     try {
-      let response = await fetch(
-        `http://localhost:3000/api/kudos/${kudoSlug}`,
+      const response = await fetch(
+        `http://mock-api:8080/api/kudos/${kudosSlug}`,
         {
           headers: {
             Accept: "application/json",
             "Content-Type": "application/json",
             "user-id": userId,
           },
-        }
+        },
       );
-      let json = await response.json();
-
-      return json;
+      return await response.json();
     } catch (error) {
       console.error("Ocorreu um erro ao buscar os dados:", error);
     }
@@ -61,7 +65,7 @@ export default class KudosService {
 
   async create({ kudosData, userId }: createRequest) {
     try {
-      let response = await fetch("/api/kudos", {
+      const response = await fetch("http://mock-api:8080/api/kudos", {
         method: "POST",
         headers: {
           Accept: "application/json",
@@ -71,9 +75,7 @@ export default class KudosService {
         body: JSON.stringify(kudosData),
       });
 
-      let json = await response.json();
-
-      return json;
+      return await response.json();
     } catch (error) {
       console.error("Ocorreu um erro ao salvar os dados:", error);
     }
@@ -81,19 +83,20 @@ export default class KudosService {
 
   async update({ kudosSlug, data, userId }: updateRequest) {
     try {
-      let response = await fetch(`/api/kudos/${kudosSlug}`, {
-        method: "PUT",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json",
-          "user-id": userId,
+      const response = await fetch(
+        `http://mock-api:8080/api/kudos/${kudosSlug}`,
+        {
+          method: "PUT",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+            "user-id": userId,
+          },
+          body: JSON.stringify(data),
         },
-        body: JSON.stringify(data),
-      });
+      );
 
-      let json = await response.json();
-
-      return json;
+      return await response.json();
     } catch (error) {
       console.error("Ocorreu um erro ao salvar os dados:", error);
     }
