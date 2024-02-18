@@ -21,13 +21,16 @@ export default class KudosController {
   }
 
   async findBySlug({
-    kudoSlug,
+    kudosSlug,
     userId,
   }: {
-    kudoSlug: string;
+    kudosSlug: string;
     userId: string;
   }): Promise<KudosModel | undefined> {
-    const kudosData = await this.service.findBySlug({ userId, kudoSlug });
+    const kudosData = await this.service.findBySlug({
+      userId,
+      kudosSlug: kudosSlug,
+    });
 
     if (!kudosData) {
       return;
