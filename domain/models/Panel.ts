@@ -34,7 +34,7 @@ export default class PanelModel {
   }
 
   public getData() {
-    return  {
+    return {
       title: this.title,
       description: this.description,
       slug: this.slug,
