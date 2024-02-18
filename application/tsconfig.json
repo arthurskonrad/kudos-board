@@ -23,7 +23,9 @@
     "noFallthroughCasesInSwitch": true
   },
   "include": [
-    "ui"
+    "ui",
+    "domain",
+    "infrastructure"
   ],
   "references": [
     {
