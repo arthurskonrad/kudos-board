@@ -1,3 +1,0 @@
-- [ ] Setup dos testes de react:
-    - [ ] trocar o atual para o react-testing-library
-    - [ ] criar um teste para o componente de Link
