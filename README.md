@@ -2,6 +2,8 @@
 
 ## Setup
 
+## Setup
+
 1. Clone the repository
 2. Generate a `docs.json` file in the root of the project using the kudos board API
 3. Setup you etc/hosts file to point `kudos-board.local` and `proxy.local`
