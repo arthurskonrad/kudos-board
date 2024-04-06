@@ -1,10 +1,26 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.tsx";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Root from "./routes/root.tsx";
+import Error from "./pages/Error/Error.tsx";
+import Panels from "./pages/Panels/Panels.tsx";
+import Home from "./pages/Home/Home.tsx";
 import "./index.css";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Root />,
+    errorElement: <Error />,
+    children: [
+      { path: "", element: <Home /> },
+      { path: "panels", element: <Panels /> },
+    ],
+  },
+]);
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <App />
-  </React.StrictMode>
+    <RouterProvider router={router} />
+  </React.StrictMode>,
 );
