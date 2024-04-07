@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Root from "./routes/root.tsx";
+import Root from "./routes/Root.tsx";
 import Error from "./pages/Error/Error.tsx";
 import Panels from "./pages/Panels/Panels.tsx";
 import Home from "./pages/Home/Home.tsx";
